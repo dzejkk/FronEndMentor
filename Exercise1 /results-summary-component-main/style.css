@@ -1,39 +1,44 @@
 /*colors + fonts */
 
 @font-face {
-    font-family: 'HankenGrotesk';
-    src: url(assets/fonts/HankenGrotesk-VariableFont_wght.ttf)
-    format('truetype');
-    font-display: swap;
-    font-weight: 100 900;
+  font-family: "HankenGrotesk";
+  src: url(assets/fonts/HankenGrotesk-VariableFont_wght.ttf) format("truetype");
+  font-display: swap;
+  font-weight: 100 900;
 }
 
 :root {
-    --primary-color-1:hsl(0, 100%, 67%,);
-    --primary-color-2:hsl(39, 100%, 56%);
-    --primary-color-3:hsl(166, 100%, 37%);
-    --primary-color-4:hsl(234, 85%, 45%);
+  --primary-color-1: hsl(0, 100%, 67%);
+  --primary-color-2: hsl(39, 100%, 56%);
+  --primary-color-3: hsl(166, 100%, 37%);
+  --primary-color-4: hsl(234, 85%, 45%);
 
-    --gradient-primary-1: linear-gradient(hsl(252, 100%, 67%),hsl(241, 81%, 54%));
-    --gradient-primary-2: linear-gradient(hsla(256, 72%, 46%, 1),hsla(241, 72%, 46%, 0));
+  --gradient-primary-1: linear-gradient(
+    hsl(252, 100%, 67%),
+    hsl(241, 81%, 54%)
+  );
+  --gradient-primary-2: linear-gradient(
+    hsla(256, 72%, 46%, 1),
+    hsla(241, 72%, 46%, 0)
+  );
 
-    --neutral-color-1: hsl(0, 0%, 100%);
-    --neutral-color-2: hsl(221, 100%, 96%);
-    --neutral-color-3: hsl(241, 100%, 89%);
-    --neutral-color-4: hsl(224, 30%, 27%);
+  --neutral-color-1: hsl(0, 0%, 100%);
+  --neutral-color-2: hsl(221, 100%, 96%);
+  --neutral-color-3: hsl(241, 100%, 89%);
+  --neutral-color-4: hsl(224, 30%, 27%);
 
-    --font-family-default: 'HankenGrotesk';
+  --font-family-default: "HankenGrotesk";
 
-    --fw-regular: 500;
-    --fw-bold: 700;
-    --fw-black: 800;
+  --fw-regular: 500;
+  --fw-bold: 700;
+  --fw-black: 800;
 
-    --fs-400: 1.125rem;
-    --fs-500: 1.25rem;
-    --fs-600: 1.5rem;
-    --fs-700: 1.75rem;
-    --fs-800: 2rem;
-    --fs-900: 5rem;
+  --fs-400: 1.125rem;
+  --fs-500: 1.25rem;
+  --fs-600: 1.5rem;
+  --fs-700: 1.75rem;
+  --fs-800: 2rem;
+  --fs-900: 5rem;
 }
 
 /*reset*/
@@ -41,52 +46,123 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 * {
-    margin: 0;
-    font: inherit;
+  margin: 0;
+  font: inherit;
 }
 
 img,
 svg {
-    display: block;
-    max-width: 100%;
+  display: block;
+  max-width: 100%;
 }
 
 /*start*/
 
 body {
-    font-family: var(--font-family-default);
-    font-size: var(--fs-400);
+  font-family: var(--font-family-default);
+  font-size: var(--fs-400);
 }
 
-
 @media (min-width: 600px) {
-    body {
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-    }
+  body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+  }
 }
 
 .section-title {
-    font-weight: var(--fw-bold);
-    font-size: var(--fs-600);
-} 
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-600);
+}
 
 .button {
-    background-color: var(--neutral-color-4);
-    color: var(--neutral-color-1);
-    border-radius: 100vw;
-    line-height: 1;
-    padding: 1rem 2rem;
-    border: 0;
-    cursor: pointer;
+  background-color: var(--neutral-color-4);
+  color: var(--neutral-color-1);
+  border-radius: 100vw;
+  line-height: 1;
+  padding: 1rem 2rem;
+  border: 0;
+  cursor: pointer;
 }
 
 .button:hover,
 .button:focus-visible {
-    background: var(--gradient-primary-1);
+  background: var(--gradient-primary-1);
+}
+
+.result-summary {
+  --border-radius: 2rem;
+  --padding: 2.5rem;
+
+  max-width: 46rem;
+  display: grid;
+}
+
+.results,
+.summary {
+  padding: var(--padding);
+}
+
+/*mobile*/
+
+@media (min-width: 600px) {
+  .result-summary {
+    margin-inline: 1rem;
+    grid-template-columns: 1fr 1fr;
+    border-radius: var(--border-radius);
+    box-shadow: 0.5rem 1rem 3rem var(--neutral-color-4);
+  }
+}
+
+.results {
+  background: var(--gradient-primary-1);
+  color: var(--neutral-color-3);
+  text-align: center;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+@media (min-width: 600px) {
+  .results {
+    border-radius: var(--border-radius);
+  }
+}
+
+.grid-flow {
+    display: grid;
+    align-content: start;
+    gap: 1rem;
+}
+
+
+.grid-flow[data-spacing="large"] {
+    gap: 2rem;
+}
+
+.result-score {
+    display: grid;
+    place-content: center;
+    width: 12rem;
+    margin-inline: auto;
+    border-radius: 50%;
+    background: var(--gradient-primary-2);
+    aspect-ratio: 1/1;
+}
+
+.result-score span {
+    display: block;
+    font-size: var(--fs-900);
+    font-weight: var(--fw-black);
+    line-height: 1;
+    color: var(--neutral-color-1)
+}
+
+.result-rank {
+    color: var(--neutral-color-1);
+    font-size: var(--fs-700);
+    font-weight: var(--fw-bold);
 }
