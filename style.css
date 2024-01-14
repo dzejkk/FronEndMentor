@@ -190,6 +190,8 @@ body {
   padding: 1rem;
 }
 
+/*list items*/
+
 .summary-item[data-item-type="accent-1"] {
   background-color: var(--clr-accent-1);
 }
